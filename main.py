@@ -10,6 +10,7 @@ from opcion1_fundamental import analizar_inversion
 from opcion2_sentimiento import analizar_sentimiento
 from opcion3_macro import analizar_macro
 from opcion4_imagen_FreepikAI import generar_imagen_freepik
+from opcion5_costo_tokens import analizar_costo_tokens
 
 # Configura la consola para una visualización mejorada
 console = Console()
@@ -25,7 +26,8 @@ def mostrar_menu():
     table.add_row("2", "Análisis de Sentimiento de Noticias de Empresas Tecnológicas")
     table.add_row("3", "Análisis Macroeconómico y de Riesgos")
     table.add_row("4", "Generación Visual con IA ")
-    table.add_row("0", "Salir")
+    table.add_row("5", "Analizar Costo de Tokens de Gemini")
+    table.add_row("6", "Salir")
 
     console.print(table)
 
@@ -58,10 +60,13 @@ def main():
             console.print("\n[bold green]Iniciando Generación de Imágenes con Freepik AI...[/bold green]")
             prompt = console.input("Ingresa una descripción para la imagen: ")
             generar_imagen_freepik(
-                prompt, 
+                prompt,
                 freepik_api_key=Config.FREEPIK_API_KEY
             )
-        elif eleccion == '0':
+        elif eleccion == '5':
+            console.print("\n[bold green]Iniciando Análisis de Costo de Tokens...[/bold green]")
+            analizar_costo_tokens()
+        elif eleccion == '6' or eleccion == '0':
             console.print("\n[bold magenta]¡Gracias por usar el asistente! Hasta luego.[/bold magenta]")
             break
         else:
